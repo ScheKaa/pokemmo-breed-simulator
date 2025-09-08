@@ -77,7 +77,9 @@ export class PokemonBreedService {
                 : new BreedError(BreedErrorKind.RootNodeSpeciesMismatch)
         }
 
-        return child.species?.id === childSpecies.id ? null : new BreedError(BreedErrorKind.RootNodeSpeciesMismatch)
+        // For non-genderless root node, check if childSpecies is the base evolution of the root species
+        const baseId = child.species!.getBaseEvolutionId(this.pokemonEvolutions)
+        return childSpecies.id === baseId ? null : new BreedError(BreedErrorKind.RootNodeSpeciesMismatch)
     }
 
     private checkEggGroups(parent1: PokemonNode, parent2: PokemonNode): BreedError | null {
