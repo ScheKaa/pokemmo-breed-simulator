@@ -56,12 +56,13 @@ export function PokemonNodeInfo(props: {
                             breedTree={props.breedTree}
                             updateBreedTree={props.updateBreedTree}
                         />
-                        <PokemonNodeHeldItem
-                            item={
-                                //if not natured, ivs must exist.
-                                props.currentNode.nature ? HeldItem.Nature : heldItem!
-                            }
-                        />
+                        {(props.currentNode.nature || heldItem) && (
+                            <PokemonNodeHeldItem
+                                item={
+                                    props.currentNode.nature ? HeldItem.Nature : heldItem!
+                                }
+                            />
+                        )}
                     </div>
                 ) : null}
             </CardHeader>
