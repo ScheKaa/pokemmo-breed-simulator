@@ -23,7 +23,7 @@ import {
 } from "@/core/PokemonBreedMap"
 import { BreedContext } from "@/core/PokemonBreedContext"
 
-// export type BreedErrors = Record<PokemonBreedMapPositionKey, BreedErrorSet | undefined>
+export type BreedErrors = Record<PokemonBreedMapPositionKey, BreedError[]>
 
 function getCurrentBreedCost(breedTree: PokemonBreedMap, lastRowIdx: number): number {
     return Object.values(breedTree).reduce((totalCost, node) => {

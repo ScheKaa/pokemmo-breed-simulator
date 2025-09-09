@@ -39,7 +39,7 @@ export function PokemonNodeLines(props: {
         if (hasError) {
             return "bg-red-500"
         }
-        if (node.species && node.gender && partnerNode.species && partnerNode.gender) {
+        if ((node.species && node.gender) || (partnerNode.species && partnerNode.gender)) {
             return "bg-green-500"
         }
         return "bg-foreground"
